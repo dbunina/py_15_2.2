@@ -31,7 +31,9 @@ def get_top_words_for_file(filename, encoding):
 
 def get_popular_words():
     popular_words_by_article = dict()
-    os.chdir('./news/')
+    current_path = os.path.dirname(__file__)
+    news_path = os.path.join(current_path, 'news')
+    os.chdir(news_path)
     for filename in glob.glob('*.txt'):
         encoding = detect_encoding(filename)
         popular_words_by_article[filename] = get_top_words_for_file(filename, encoding)
